@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HXr-Xb-4mF">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="7EP-R7-1rK">
+            <objects>
+                <viewController id="HXr-Xb-4mF" customClass="ViewController" customModule="SleepAnalysis" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N9R-64-32r"/>
+                        <viewControllerLayoutGuide type="bottom" id="yLw-KY-bED"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N8X-WR-6uQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raD-y0-j0C">
+                                <rect key="frame" x="231" y="151" width="138" height="152"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="138" id="emQ-7E-mma"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYY-W5-6TC">
+                                <rect key="frame" x="539" y="557" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="Lfm-Eq-PSa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stop:" destination="HXr-Xb-4mF" eventType="touchUpInside" id="TJ4-0B-aIT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDf-7X-Fao">
+                                <rect key="frame" x="20" y="557" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="lEi-Ll-8gj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="start:" destination="HXr-Xb-4mF" eventType="touchUpInside" id="27W-bY-QoE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20235776901245117" green="0.92329782247543335" blue="0.91781079769134521" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yLw-KY-bED" firstAttribute="top" secondItem="wDf-7X-Fao" secondAttribute="bottom" constant="13" id="2z8-GR-Euo"/>
+                            <constraint firstItem="raD-y0-j0C" firstAttribute="top" secondItem="N9R-64-32r" secondAttribute="bottom" constant="131" id="NEe-u9-0ML"/>
+                            <constraint firstItem="wYY-W5-6TC" firstAttribute="baseline" secondItem="wDf-7X-Fao" secondAttribute="baseline" id="YXy-at-u8H"/>
+                            <constraint firstItem="wDf-7X-Fao" firstAttribute="leading" secondItem="N8X-WR-6uQ" secondAttribute="leading" constant="20" symbolic="YES" id="a7c-cB-htl"/>
+                            <constraint firstAttribute="trailing" secondItem="wYY-W5-6TC" secondAttribute="trailing" constant="15" id="nuk-71-BEs"/>
+                            <constraint firstItem="yLw-KY-bED" firstAttribute="top" secondItem="raD-y0-j0C" secondAttribute="bottom" constant="297" id="s9l-tT-eiA"/>
+                            <constraint firstItem="raD-y0-j0C" firstAttribute="centerX" secondItem="N8X-WR-6uQ" secondAttribute="centerX" id="t06-AK-DDb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="displayTimeLabel" destination="raD-y0-j0C" id="dX0-YZ-xdo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="150-Ip-7Yf" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
