@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     
     @IBOutlet var displayTimeLabel: UILabel!
     
-    var startTime = NSTimeInterval()
-    var timer:NSTimer = NSTimer()
+    var startTime = TimeInterval()
+    var timer:Timer = Timer()
     let healthStore = HKHealthStore()
-    var endTime: NSDate!
-    var alarmTime: NSDate!
+    var endTime: Date!
+    var alarmTime: Date!
 
 
     override func viewDidLoad() {
@@ -26,14 +26,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let typestoRead = Set([
-            HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis)!
+            HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!
             ])
         
         let typestoShare = Set([
-            HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis)!
+            HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!
             ])
         
-        self.healthStore.requestAuthorizationToShareTypes(typestoShare, readTypes: typestoRead) { (success, error) -> Void in
+        self.healthStore.requestAuthorization(toShare: typestoShare, read: typestoRead) { (success, error) -> Void in
             if success == false {
                  NSLog(" Display not allowed")
             }
@@ -42,39 +42,39 @@ class ViewController: UIViewController {
     
     
     @IBAction func start(sender: AnyObject) {
-        alarmTime = NSDate()
-        if (!timer.valid) {
+        alarmTime = Date()
+        if (!timer.isValid) {
             let aSelector : Selector = #selector(ViewController.updateTime)
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
-            startTime = NSDate.timeIntervalSinceReferenceDate()
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
+            startTime = Date().timeIntervalSinceReferenceDate
         }
         
           }
     
     
     @IBAction func stop(sender: AnyObject) {
-        endTime = NSDate()
+        endTime = Date()
         self.saveSleepAnalysis()
         self.retrieveSleepAnalysis()
         timer.invalidate()
     }
     
-    func updateTime() {
-        let currentTime = NSDate.timeIntervalSinceReferenceDate()
+    @objc func updateTime() {
+        let currentTime = Date().timeIntervalSinceReferenceDate
         
         //Find the difference between current time and start time.
-        var elapsedTime: NSTimeInterval = currentTime - startTime
+        var elapsedTime: TimeInterval = currentTime - startTime
         
        // print(elapsedTime)
       //  print(Int(elapsedTime))
         
         //calculate the minutes in elapsed time.
         let minutes = UInt8(elapsedTime / 60.0)
-        elapsedTime -= (NSTimeInterval(minutes) * 60)
+        elapsedTime -= (TimeInterval(minutes) * 60)
         
         //calculate the seconds in elapsed time.
         let seconds = UInt8(elapsedTime)
-        elapsedTime -= NSTimeInterval(seconds)
+        elapsedTime -= TimeInterval(seconds)
         
         //find out the fraction of milliseconds to be displayed.
         let fraction = UInt8(elapsedTime * 100)
@@ -94,15 +94,15 @@ class ViewController: UIViewController {
         
         
     
-        if let sleepType = HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis) {
+        if let sleepType = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis) {
             
             // we create new object we want to push in Health app
             
-            let object = HKCategorySample(type:sleepType, value: HKCategoryValueSleepAnalysis.InBed.rawValue, startDate: self.alarmTime, endDate: self.endTime)
+            let object = HKCategorySample(type:sleepType, value: HKCategoryValueSleepAnalysis.inBed.rawValue, start: self.alarmTime as Date, end: self.endTime as Date)
             
             // we now push the object to HealthStore
             
-            healthStore.saveObject(object, withCompletion: { (success, error) -> Void in
+            healthStore.save(object, withCompletion: { (success, error) -> Void in
                 
                 if error != nil {
                     
@@ -122,10 +122,10 @@ class ViewController: UIViewController {
             })
             
             
-            let object2 = HKCategorySample(type:sleepType, value: HKCategoryValueSleepAnalysis.Asleep.rawValue, startDate: self.alarmTime, endDate: self.endTime)
+            let object2 = HKCategorySample(type:sleepType, value: HKCategoryValueSleepAnalysis.asleep.rawValue, start: self.alarmTime as Date, end: self.endTime as Date)
             
             
-            healthStore.saveObject(object2, withCompletion: { (success, error) -> Void in
+            healthStore.save(object2, withCompletion: { (success, error) -> Void in
                 
                 if error != nil {
                     
@@ -162,7 +162,7 @@ class ViewController: UIViewController {
         
         // first, we define the object type we want
         
-        if let sleepType = HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis) {
+        if let sleepType = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis) {
             
             // You may want to use a predicate to filter the data... startDate and endDate are NSDate objects corresponding to the time range that you want to retrieve
             
@@ -188,7 +188,7 @@ class ViewController: UIViewController {
                     for item in result {
                         if let sample = item as? HKCategorySample {
                             
-                            let value = (sample.value == HKCategoryValueSleepAnalysis.InBed.rawValue) ? "InBed" : "Asleep"
+                            let value = (sample.value == HKCategoryValueSleepAnalysis.inBed.rawValue) ? "InBed" : "Asleep"
                             
                             print("Healthkit sleep: \(sample.startDate) \(sample.endDate) - value: \(value)")
                         }
@@ -197,7 +197,7 @@ class ViewController: UIViewController {
             }
             
             
-            healthStore.executeQuery(query)
+            healthStore.execute(query)
         }
     
     }

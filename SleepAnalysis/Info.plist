@@ -31,6 +31,10 @@
 		<string>armv7</string>
 		<string>healthkit</string>
 	</array>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>This app requires Health access</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>This app requires Health access</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
