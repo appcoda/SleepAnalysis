@@ -12,7 +12,7 @@
 		2B3AAAF21CDF95FA00EAD56B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B3AAAF01CDF95FA00EAD56B /* Main.storyboard */; };
 		2B3AAAF41CDF95FA00EAD56B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B3AAAF31CDF95FA00EAD56B /* Assets.xcassets */; };
 		2B3AAAF71CDF95FA00EAD56B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B3AAAF51CDF95FA00EAD56B /* LaunchScreen.storyboard */; };
-		2B3AAB001CDF962100EAD56B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B3AAAFF1CDF962100EAD56B /* HealthKit.framework */; };
+		45506505253D9A5B00934D59 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45506504253D9A5B00934D59 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +24,7 @@
 		2B3AAAF61CDF95FA00EAD56B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B3AAAF81CDF95FA00EAD56B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B3AAAFE1CDF962100EAD56B /* SleepAnalysis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SleepAnalysis.entitlements; sourceTree = "<group>"; };
-		2B3AAAFF1CDF962100EAD56B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		45506504253D9A5B00934D59 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B3AAB001CDF962100EAD56B /* HealthKit.framework in Frameworks */,
+				45506505253D9A5B00934D59 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,9 +42,9 @@
 		2B3AAAE01CDF95F900EAD56B = {
 			isa = PBXGroup;
 			children = (
-				2B3AAAFF1CDF962100EAD56B /* HealthKit.framework */,
 				2B3AAAEB1CDF95FA00EAD56B /* SleepAnalysis */,
 				2B3AAAEA1CDF95F900EAD56B /* Products */,
+				45506503253D9A5B00934D59 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +68,14 @@
 				2B3AAAF81CDF95FA00EAD56B /* Info.plist */,
 			);
 			path = SleepAnalysis;
+			sourceTree = "<group>";
+		};
+		45506503253D9A5B00934D59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45506504253D9A5B00934D59 /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,6 +110,7 @@
 				TargetAttributes = {
 					2B3AAAE81CDF95F900EAD56B = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = RE4YFXSB23;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -115,6 +124,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -262,10 +272,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SleepAnalysis/SleepAnalysis.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = RE4YFXSB23;
 				INFOPLIST_FILE = SleepAnalysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.anushkmittal.SleepAnalysis;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anushkmittal.SleepAnalysis.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -275,10 +287,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SleepAnalysis/SleepAnalysis.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = RE4YFXSB23;
 				INFOPLIST_FILE = SleepAnalysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.anushkmittal.SleepAnalysis;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anushkmittal.SleepAnalysis.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
