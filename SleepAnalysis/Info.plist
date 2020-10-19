@@ -14,8 +14,14 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>SleepAnalysis app needs your permission for health records usage.</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>SleepAnalysis app needs your permission for sharing health records.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>SleepAnalysis app needs your permission for updating your health records.</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
